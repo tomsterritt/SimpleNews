@@ -1,7 +1,7 @@
 SimpleNews
 ============
 
-SimpleNews is a basic module which builds upon the default functionality of the phpVMS News system, allowing you to show a list of links to latest news items and an individual page per item.
+SimpleNews is a basic module which builds upon the default functionality of the phpVMS News system, allowing you to show a list of links to latest news items, a paginated view of news items and an individual page per item.
 
 ###Installation
 
@@ -24,3 +24,5 @@ You can also link to a single news item like so: `index.php/SimpleNews/item/1`
 ###License
 
 Released under the [&#9786; Licence](http://licence.visualidiot.com/)
+
+Feel free to edit this code however you want. Please also don't hesitate to fork this repo and raise pull requests in order to extend the module however you feel is appropriate.

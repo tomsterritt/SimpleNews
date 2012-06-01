@@ -3,6 +3,8 @@ SimpleNews
 
 SimpleNews is a basic module which builds upon the default functionality of the phpVMS News system, allowing you to show a list of links to latest news items, a paginated view of news items and an individual page per item.
 
+No attribution or link back is required (see License).
+
 ###Installation
 
 To install, simply extract the contents of the zip archive and drag the contents into the root public folder of your phpVMS installation.

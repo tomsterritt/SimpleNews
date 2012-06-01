@@ -13,11 +13,11 @@ To install, simply extract the contents of the zip archive and drag the contents
 
 To display a list of latest news items anywhere on your site, call the following:
 
-```<?php SimpleNews::NewstList(); ?>```
+```<?php SimpleNews::NewsList(); ?>```
 
 By default the list will show the 5 latest items, however you can configure it to show however many you wish, as follows:
 
-```<?php SimpleNews::NewstList(10); ?>```
+```<?php SimpleNews::NewsList(10); ?>```
 
 You can link to a paginated list of news items at `index.php/SimpleNews` or a certain page of the list at `index.php/SimpleNews/page/2` etc.
 

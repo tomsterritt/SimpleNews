@@ -13,6 +13,7 @@ class NewsData extends CodonData{
 	public static $itemsperpage = 5;
 	
 	public function Single($id){
+        $id = DB::escape($id);
 		$sql = "SELECT id, subject, body, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id='".$id."'";
 		return DB::get_row($sql);
 	}
@@ -23,16 +24,19 @@ class NewsData extends CodonData{
 	}
 	
 	public function GetPrev($id){
+        $id = DB::escape($id);
 		$sql = "SELECT id, subject, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id < '".$id."' ORDER BY id DESC LIMIT 1";
 		return DB::get_row($sql);
 	}
 	
 	public function GetNext($id){
+        $id = DB::escape($id);
 		$sql = "SELECT id, subject, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id > '".$id."' ORDER BY id ASC LIMIT 1";
 		return DB::get_row($sql);
 	}
 	
 	public function CountPages(){
+        $id = DB::escape($id);
 		$sql = "SELECT CEIL(COUNT(id)/".self::$itemsperpage.") as count FROM ".TABLE_PREFIX."news";
 		$row = DB::get_row($sql);
 		return $row->count;

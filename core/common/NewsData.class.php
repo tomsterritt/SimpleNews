@@ -12,37 +12,37 @@ class NewsData extends CodonData{
 	
 	public static $itemsperpage = 5;
 	
-	public function Single($id){
+	public static function Single($id){
 		$id = DB::escape($id);
 		$sql = "SELECT id, subject, body, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id='".$id."'";
 		return DB::get_row($sql);
 	}
 	
-	public function GetNews($max = 5, $offset = 0){
+	public static function GetNews($max = 5, $offset = 0){
 		$sql = "SELECT id, subject, body, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news ORDER BY postdate DESC LIMIT ".$offset.",".$max;
 		return DB::get_results($sql);
 	}
 	
-	public function GetPrev($id){
+	public static function GetPrev($id){
 		$id = DB::escape($id);
 		$sql = "SELECT id, subject, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id < '".$id."' ORDER BY id DESC LIMIT 1";
 		return DB::get_row($sql);
 	}
 	
-	public function GetNext($id){
+	public static function GetNext($id){
 		$id = DB::escape($id);
 		$sql = "SELECT id, subject, UNIX_TIMESTAMP(postdate) as postdate, postedby FROM ".TABLE_PREFIX."news WHERE id > '".$id."' ORDER BY id ASC LIMIT 1";
 		return DB::get_row($sql);
 	}
 	
-	public function CountPages(){
+	public static function CountPages(){
 		$id = DB::escape($id);
 		$sql = "SELECT CEIL(COUNT(id)/".self::$itemsperpage.") as count FROM ".TABLE_PREFIX."news";
 		$row = DB::get_row($sql);
 		return $row->count;
 	}
 	
-	public function IsNextPage($page){
+	public static function IsNextPage($page){
 		if($page < self::CountPages()){
 			return true;
 		} else {
@@ -50,7 +50,7 @@ class NewsData extends CodonData{
 		}
 	}
 	
-	public function Truncate($text, $words=100){
+	public static function Truncate($text, $words=100){
 		$phrase_array = explode(' ',$text);
 		if(count($phrase_array) > $words && $words > 0){
 			$text = implode(' ',array_slice($phrase_array, 0, $words)).'...';
